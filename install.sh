@@ -29,7 +29,7 @@ sudo systemctl enable avahi-daemon
 sudo systemctl enable acpid
 
 # Terminal (eg. terminator,kitty,xfce4-terminal,tilix)
-sudo apt install -y kitty
+sudo apt install -y alacritty
 
 # Sound packages
 sudo apt install -y pulseaudio alsa-utils pavucontrol volumeicon-alsa
@@ -58,15 +58,13 @@ sudo apt install -y firefox-esr
 # sudo apt install -y nitrogen 
 sudo apt install -y feh
 
-# Required packages for i3-gaps installation
-sudo apt install -y meson dh-autoreconf libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev xcb libxcb1-dev libxcb-icccm4-dev libyajl-dev libev-dev libxcb-xkb-dev libxcb-cursor-dev libxkbcommon-dev libxcb-xinerama0-dev libxkbcommon-x11-dev libstartup-notification0-dev libxcb-randr0-dev libxcb-xrm0 libxcb-xrm-dev libxcb-shape0 libxcb-shape0-dev i3status
 
 # Packages needed i3-gaps after installation
-sudo apt install -y dmenu sxhkd numlockx rofi dunst libnotify-bin picom unzip geany simple-scan
+sudo apt install -y dmenu sxhkd numlockx rofi dunst libnotify-bin picom unzip simple-scan
 
 # Command line text editor -- nano preinstalled  -- I like micro but vim is great
-sudo apt install -y micro
-# sudo apt install -y neovim
+#sudo apt install -y micro
+sudo apt install -y neovim
 
 # Install fonts
 sudo apt install fonts-font-awesome fonts-powerline fonts-ubuntu fonts-liberation2 fonts-liberation fonts-terminus fonts-cascadia-code
@@ -76,30 +74,30 @@ xdg-user-dirs-update
 
 # Install i3 gaps
 cd
-cd Downloads
-git clone https://github.com/Airblader/i3 i3-gaps
-cd i3-gaps
-mkdir -p build && cd build
-meson --prefix /usr/local
-ninja
-sudo ninja install
-
+#cd Downloads
+#git clone https://github.com/Airblader/i3 i3-gaps
+#cd i3-gaps
+#mkdir -p build && cd build
+#meson --prefix /usr/local
+#ninja
+#sudo ninja install
+sudo apt install i3wm
 # Dependencies for Ly Console Manager
-sudo apt install -y libpam0g-dev libxcb-xkb-dev
+#sudo apt install -y libpam0g-dev libxcb-xkb-dev
 
 # Install Ly Console Display Manager
-cd 
-cd Downloads
-git clone --recurse-submodules https://github.com/fairyglade/ly
-cd ly/
-make
-sudo make install installsystemd
-sudo systemctl enable ly.service
+#cd 
+#cd Downloads
+#git clone --recurse-submodules https://github.com/fairyglade/ly
+#cd ly/
+#make
+#sudo make install installsystemd
+#sudo systemctl enable ly.service
 
 # Lightdm can be used instead of Ly (more common)
 # comment out all ly console display if choosing lightdm
-# sudo apt install -y lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
-# sudo systemctl enable lightdm
+sudo apt install -y lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
+sudo systemctl enable lightdm
 
 
 # XSessions and i3.desktop
@@ -125,8 +123,8 @@ sudo cp ./temp /usr/share/xsessions/i3.desktop;rm ./temp
 ## These two scripts will install nerdfonts and copy my configuration files into the ~/.config directory
 ## Configuration uses 
 
-source ~/i3gaps-debian/nerdfonts.sh
-source ~/i3gaps-debian/copyconf.sh
+source ~/mmatesic/nerdfonts.sh
+source ~/mmatesic/copyconf.sh
 
 sudo apt autoremove
 

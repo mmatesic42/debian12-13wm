@@ -1,0 +1,21 @@
+import = ["~/.config/alacritty/colors.toml", "/home/mmatesic/.config/alacritty/fonts.toml"]
+live_config_reload = true
+
+[cursor]
+unfocused_hollow = false
+
+[cursor.style]
+blinking = "On"
+shape = "Beam"
+
+[env]
+TERM = "alacritty"
+
+[window]
+# history = 10000
+# multiplier = 3
+opacity = 0.97
+
+[window.padding]
+x = 15
+y = 15
