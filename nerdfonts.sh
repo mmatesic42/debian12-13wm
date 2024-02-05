@@ -1,5 +1,6 @@
 #!/bin/bash
-mkdir ~/.local/share/fonts
+font_dir="$HOME/.local/share/fonts"
+mkdir -p "$font_dir"
 
 cd /tmp
 fonts=( 
@@ -20,5 +21,6 @@ do
     unzip $font.zip -d $HOME/.local/share/fonts/$font/
     rm $font.zip
 done
-chown $username:$username /home/$username/.fonts/*
+chown -R "$USER:$USER" "$font_dir"
 fc-cache -vf
+

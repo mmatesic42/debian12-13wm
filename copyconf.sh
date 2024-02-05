@@ -7,14 +7,46 @@
 
 # Package needed for bumblebee-status if using apt module - currently configured is i3gaps config file.
 #sudo apt install -y aptitude
+#!/bin/bash
 
-cd
-cd debian12-13wm
-cp -r .config/backgrounds/ ~/.config
-cp -r .config/i3/ ~/.config
-cp -r .config/dunst/ ~/.config
-cp -r .config/alacritty/ ~/.config
-cp -r .config/rofi/ ~/.config
-cp -r .config/picom/ ~/.config
-cp -r .config/neofetch/ ~/.config
-chmod +x ~/.config/i3/scripts/*
+# Set the source and target directories
+source_dir="$HOME/debian12-13wm/.config"
+target_dir="$HOME/.config"
+
+# Array of directories to copy
+directories=(
+    "backgrounds"
+    "i3"
+    "dunst"
+    "alacritty"
+    "rofi"
+    "picom"
+    "neofetch"
+)
+
+# Ensure target directories exist
+for dir in "${directories[@]}"
+do
+    target_subdir="$target_dir/$dir"
+    mkdir -p "$target_subdir"
+done
+
+# Copy configurations with directory existence check
+for dir in "${directories[@]}"
+do
+    source_subdir="$source_dir/$dir"
+    target_subdir="$target_dir/$dir"
+    
+    if [ -d "$source_subdir" ]; then
+        cp -r "$source_subdir/"* "$target_subdir"
+        chmod +x "$target_subdir/scripts/"*
+    else
+        echo "Warning: Source directory $source_subdir not found."
+    fi
+done
+
+# Optional: Set ownership if needed
+# chown -R "$USER:$USER" "$target_dir"
+
+echo "Configurations copied successfully."
+
