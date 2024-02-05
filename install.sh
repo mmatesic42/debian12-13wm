@@ -7,7 +7,7 @@
 sudo apt install -y xorg xbacklight xbindkeys xvkbd xinput xorg-dev
 
 # Python installed for bumblebee-status. PACKAGE INCLUDES build-essential.
-sudo apt install -y python3-pip 
+sudo apt install -y build-essential python3-pip 
 
 # Microcode for Intel/AMD 
 # sudo apt install -y amd64-microcode
@@ -81,7 +81,7 @@ cd
 #meson --prefix /usr/local
 #ninja
 #sudo ninja install
-sudo apt install i3wm
+sudo apt install -y i3wm i3status
 # Dependencies for Ly Console Manager
 #sudo apt install -y libpam0g-dev libxcb-xkb-dev
 
