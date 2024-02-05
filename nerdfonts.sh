@@ -20,4 +20,5 @@ do
     unzip $font.zip -d $HOME/.local/share/fonts/$font/
     rm $font.zip
 done
-fc-cache
+chown $username:$username /home/$username/.fonts/*
+fc-cache -vf

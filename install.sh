@@ -14,7 +14,7 @@ sudo apt install -y python3-pip
 sudo apt install -y intel-microcode 
 
 # Network Manager
-sudo apt install -y network-manager-gnome
+sudo apt install -y policykit-1-gnome network-manager network-manager-gnome
 
 # Installation for Appearance management
 sudo apt install -y lxappearance 
@@ -23,7 +23,7 @@ sudo apt install -y lxappearance
 sudo apt install -y thunar xfce4-settings xfce4-power-manager xfce4-terminal
 
 # Network File Tools/System Events
-sudo apt install -y dialog mtools dosfstools avahi-daemon acpi acpid gvfs-backends
+sudo apt install -y dialog mtools dosfstools avahi-daemon acpi acpid gvfs-backends pdfarranger wmctrl
 
 sudo systemctl enable avahi-daemon
 sudo systemctl enable acpid
@@ -32,7 +32,7 @@ sudo systemctl enable acpid
 sudo apt install -y alacritty
 
 # Sound packages
-sudo apt install -y pulseaudio alsa-utils pavucontrol volumeicon-alsa
+sudo apt install -y pulseaudio alsa-utils pavucontrol volumeicon-alsa pamixer
 
 # Neofetch/HTOP
 sudo apt install -y neofetch htop
@@ -123,8 +123,8 @@ sudo cp ./temp /usr/share/xsessions/i3.desktop;rm ./temp
 ## These two scripts will install nerdfonts and copy my configuration files into the ~/.config directory
 ## Configuration uses 
 
-source ~/mmatesic/nerdfonts.sh
-source ~/mmatesic/copyconf.sh
+source ~/debian12-13wm/nerdfonts.sh
+source ~/debian12-13wm/copyconf.sh
 
 sudo apt autoremove
 
