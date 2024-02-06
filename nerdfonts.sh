@@ -10,7 +10,6 @@ fonts=(
 "Inconsolata" 
 "Iosevka" 
 "JetBrainsMono" 
-"Mononoki" 
 "RobotoMono" 
 "SourceCodePro" 
 )

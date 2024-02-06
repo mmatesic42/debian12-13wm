@@ -29,7 +29,7 @@ sudo systemctl enable avahi-daemon
 sudo systemctl enable acpid
 
 # Terminal (eg. terminator,kitty,xfce4-terminal,tilix)
-sudo apt install -y alacritty
+sudo apt install -y kitty
 
 # Sound packages
 sudo apt install -y pulseaudio alsa-utils pavucontrol volumeicon-alsa pamixer
@@ -81,7 +81,7 @@ cd
 #meson --prefix /usr/local
 #ninja
 #sudo ninja install
-sudo apt install -y i3wm i3status
+sudo apt install -y i3
 # Dependencies for Ly Console Manager
 #sudo apt install -y libpam0g-dev libxcb-xkb-dev
 
@@ -96,7 +96,7 @@ sudo apt install -y i3wm i3status
 
 # Lightdm can be used instead of Ly (more common)
 # comment out all ly console display if choosing lightdm
-sudo apt install -y lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
+sudo apt install -y lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings slick-greeter
 sudo systemctl enable lightdm
 
 

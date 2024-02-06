@@ -18,7 +18,6 @@ directories=(
     "backgrounds"
     "i3"
     "dunst"
-    "alacritty"
     "rofi"
     "picom"
     "neofetch"
@@ -46,7 +45,7 @@ do
 done
 
 # Optional: Set ownership if needed
-# chown -R "$USER:$USER" "$target_dir"
+chown -R "$USER:$USER" "$target_dir"
 
 echo "Configurations copied successfully."
 
