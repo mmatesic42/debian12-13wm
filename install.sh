@@ -4,7 +4,7 @@
 # Install packages after installing base Debian with no GUI
 
 # xorg display server installation
-sudo apt install -y xorg xbacklight xbindkeys xvkbd xinput xorg-dev
+sudo apt install -y xorg brightnessctl xbindkeys xvkbd xinput xorg-dev
 
 # Python installed for bumblebee-status. PACKAGE INCLUDES build-essential.
 sudo apt install -y build-essential python3-pip 
@@ -20,7 +20,7 @@ sudo apt install -y policykit-1-gnome network-manager network-manager-gnome
 sudo apt install -y lxappearance 
 
 # File Manager (eg. pcmanfm,krusader)
-sudo apt install -y thunar xfce4-settings xfce4-power-manager xfce4-terminal
+sudo apt install -y thunar xfce4-settings xfce4-power-manager
 
 # Network File Tools/System Events
 sudo apt install -y dialog mtools dosfstools avahi-daemon acpi acpid gvfs-backends pdfarranger wmctrl
@@ -81,7 +81,7 @@ cd
 #meson --prefix /usr/local
 #ninja
 #sudo ninja install
-sudo apt install -y i3 i3status
+sudo apt install -y i3 i3blocks
 # Dependencies for Ly Console Manager
 #sudo apt install -y libpam0g-dev libxcb-xkb-dev
 
@@ -123,9 +123,8 @@ sudo cp ./temp /usr/share/xsessions/i3.desktop;rm ./temp
 ## These two scripts will install nerdfonts and copy my configuration files into the ~/.config directory
 ## Configuration uses 
 
-source ~/debian12-13wm/nerdfonts.sh
-source ~/debian12-13wm/copyconf.sh
-
+source ~/debian12-i3wm/nerdfonts.sh
+rsync -a "$PWD"/dotfiles/etc/skel/ "$HOME"/
 sudo apt autoremove
 
 printf "\e[1;32mYou can now reboot! Thanks you.\e[0m\n"
