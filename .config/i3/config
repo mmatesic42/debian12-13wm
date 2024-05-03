@@ -1,4 +1,4 @@
-# This file is a modified version based on default i3-config-wizard config
+
 # source is available here:
 # https://raw.githubusercontent.com/endeavouros-team/endeavouros-i3wm-setup/master/.config/i3/config
 # Maintainer: joekamprad [joekamprad //a_t// endeavouros.com]
@@ -22,7 +22,7 @@
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-set $i3_fonts JetBrainsMono Nerd Font 15
+set $i3_fonts JetBrainsMonoNL Nerd Font Mono SemiBold 15
 font pango:$i3_fonts
 # set the mod key to the winkey:
 set $mod Mod4
@@ -313,19 +313,19 @@ set $ws10 "10"
 # use workspaces on different displays:
 # where you have to replace VGA-0/HDMI-0 with the names for your displays
 # you can get from xrandr command
-workspace $ws1 output HDMI-1-0
-workspace $ws2 output eDP-2
-workspace $ws3 output eDP-2
-workspace $ws4 output eDP-2
-workspace $ws5 output eDP-2
+workspace $ws1 output HDMI-1-1
+workspace $ws2 output eDP-1
+workspace $ws3 output eDP-1
+workspace $ws4 output eDP-1
+workspace $ws5 output eDP-1
 
 # bind program to workspace and focus to them on startup:
 assign [class="kitty"] $ws2
 assign [class="(?i)firefox"] $ws1
-assign [class="discord"] $ws4
+assign [class="Foliate"] $ws4
 assign [class="thunderbird"] $ws6
 assign [class="jetbrains-phpstorm"] $ws3
-assign [class="Foliate"] $ws5
+assign [class="discord"] $ws5
 
 # automatic set focus new window if it opens on another workspace than the current:
 for_window [class=kitty] focus
@@ -364,7 +364,7 @@ for_window [class=Foliate] focus
 #exec_always --no-startup-id picom -b
 #
 # for custom config:
-exec_always --no-startup-id picom --config  ~/.config/picom.conf
+exec_always --no-startup-id picom --config  ~/.config/picom/picom.conf
 
 #############################################
 # autostart applications/services on login: #
@@ -385,7 +385,7 @@ exec --no-startup-id dex --autostart --environment i3
 #exec --no-startup-id sh /usr/share/endeavouros/scripts/welcome --startdelay=3 
 
 # num lock activated
-#exec --no-startup-id numlockx on
+exec --no-startup-id numlockx off
 
 # configure multiple keyboard layouts and hotkey to switch (Alt+CAPSLOCK in this example)
 #exec --no-startup-id setxkbmap -layout 'us,sk' -variant altgr-intl,qwerty -option 'grp:alt_caps_toggle'
@@ -399,7 +399,7 @@ exec --no-startup-id ~/.screenlayout/dual_monitor.sh
 
 # set wallpaper
 # exec --no-startup-id sleep 2 && nitrogen --restore
-exec --no-startup-id sleep 1 && feh --bg-fill ~/Pictures/mountains.png
+exec --no-startup-id sleep 1 && feh --bg-fill ~/Pictures/wall.png
 
 # set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
@@ -468,6 +468,7 @@ for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
 for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enable
 for_window [class="Pamac-manager"] floating enable
 for_window [window_role="About"] floating enable
+for_window [window_role="kitty"] floating enable
 
 # set border of floating window
 for_window [class="urxvt"] border pixel 1
@@ -484,27 +485,33 @@ for_window [class="urxvt"] border pixel 1
 ######################################
 
 # Define colors variables:
-set $darkbluetrans	#08052be6
-set $darkblue		#08052b
-set $lightblue		#31748f
-set $urgentred		#e53935
-set $white		#ffffff
-set $black		#000000
-set $purple		#e345ff
-set $darkgrey		#383c4a
-set $grey		#b0b5bd
-set $mediumgrey		#8b8b8b
-set $yellowbrown	#e1b700
-set $rose		#ebbcba
-set $foam		#9ccfd8
-set $iris		#c4a7e7
-set $gold		#f6c177
-# define colors for windows: 
-#class		        	border		bground		text		indicator	child_border
-client.focused		    	$lightblue	$darkblue	$white		$lightblue	$lightblue
-client.unfocused	    	$darkblue	$darkblue	$grey		$darkgrey	$gold
-client.focused_inactive		$darkblue	$darkblue	$grey		$black		$gold
-client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
+# set primary Rosé Pine colorscheme colors
+set $base           #191724
+set $surface        #1f1d2e
+set $overlay        #26233a
+set $muted          #6e6a86
+set $subtle         #908caa
+set $text           #e0def4
+set $love           #eb6f92
+set $gold           #f6c177
+set $rose           #ebbcba
+set $pine           #31748f
+set $foam           #9ccfd8
+set $iris           #c4a7e7
+set $highlightlow   #21202e
+set $highlightmed   #403d52
+set $highlighthigh  #524f67
+
+# Teming border and Windows --------------
+# target                 title     bg    text   indicator  border
+client.focused           $rose     $base $text  $rose      $rose
+client.focused_inactive  $text     $base $text  $subtle    $surface
+client.unfocused         $text     $base $text  $overlay   $overlay
+client.urgent            $text     $base $text  $love      $love
+client.placeholder       $base     $base $text  $overlay   $overlay
+client.background        $base
+
+
 
 ############################################
 # bar settings (input comes from i3blocks) #
@@ -529,14 +536,14 @@ strip_workspace_numbers yes
 ##strip_workspace_name no
 
 		    colors {
-		    separator          $purple
-		    background         $darkgrey
+		    separator          $iris
+		    background         $base
 		    statusline         $white
 #                          		border 		        bg		txt		indicator
-		focused_workspace	$mediumgrey	   	$grey		$darkgrey	$purple
-		active_workspace	$lightblue      	$mediumgrey	$darkgrey	$purple
-		inactive_workspace	$darkgrey   		$darkgrey	$grey		$purple
-		urgent_workspace	$urgentred	    	$urgentred	$white		$purple
+		focused_workspace	$highlightmed	   	$muted		$white		$iris
+		active_workspace	$pine		      	$highlightmed	$highlighthigh	$iris	
+		inactive_workspace	$darkgrey  		$highlighthigh	$grey		$iris
+		urgent_workspace	$love			$love		$white		$iris
 	}
 }
 
@@ -551,6 +558,7 @@ strip_workspace_numbers yes
 #	status_command i3blocks -c ~/.config/i3/i3blocks-2.conf
 #	i3bar_command i3bar --transparency
 #	output HDMI-0
+
 #	position bottom
 #
 # When strip_workspace_numbers is set to yes,
@@ -596,7 +604,5 @@ bindsym $mod+t exec rofi -show window \
 #exec --no-startup-id greenclip daemon>/dev/null
 #bindsym $mod+c exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard \
 
-bindsym XF86MonBrightnessUp exec "brightnessctl set 10%+; notify-send.py 'brightness up'"  
-bindsym XF86MonBrightnessDown exec "brightnessctl set 10%-; notify-send.py 'brightness down'"
-
-
+bindsym XF86MonBrightnessUp exec "brightnessctl s 10%+; notify-send.py 'brightness up'"  
+bindsym XF86MonBrightnessDown exec "brightnessctl s 10%-; notify-send.py 'brightness down'"

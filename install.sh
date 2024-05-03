@@ -81,7 +81,7 @@ cd
 #meson --prefix /usr/local
 #ninja
 #sudo ninja install
-sudo apt install -y i3
+sudo apt install -y i3 i3status
 # Dependencies for Ly Console Manager
 #sudo apt install -y libpam0g-dev libxcb-xkb-dev
 
